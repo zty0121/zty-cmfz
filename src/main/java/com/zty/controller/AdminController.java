@@ -1,6 +1,5 @@
 package com.zty.controller;
 
-import com.zty.eneity.Admin;
 import com.zty.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,7 @@ public class AdminController {
 
     @RequestMapping("/Login")
     private String Login(String name, String password, String enCode, HttpSession session) {
-        Admin as = adminService.Login(name, password, enCode, session);
+        adminService.Login(name, password, enCode, session);
         return "redirect:/main/main.jsp";
     }
 }
