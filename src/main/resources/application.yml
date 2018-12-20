@@ -1,0 +1,17 @@
+server:
+  port: 9099
+  context-path: /cmfz
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url:  jdbc:mysql://localhost:3306/cmfz
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /
+mybatis:
+  type-aliases-package: com.zty.eneity
+  mapper-locations: /com/zty/Mapper/*Mapper.xml
