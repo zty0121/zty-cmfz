@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-
     @RequestMapping("/Login")
     private String Login(String name, String password, String enCode, HttpSession session) {
         adminService.Login(name, password, enCode, session);

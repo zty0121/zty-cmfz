@@ -5,9 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>持名法州主页</title>
     <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../themes/IconExtension.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/datagrid-detailview.js"></script>
+    <script type="text/javascript" src="../js/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
         <!--菜单处理-->
@@ -17,7 +19,9 @@
             }
             var li = "";
             for (var i = 0; i < MenuList.length; i++) {
-                var li = li + "<a href=''>" + MenuList[i].title + "</a><br>";
+                // var li = li + "<a  class='l-btn' >" + MenuList[i].title + "</a><br>";
+                // li+="<p style='text-align: center'><a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick=\"addTabs('"+MenuList[i]+"')\" data-options=\"iconCls:'icon-search'\">"+MenuList[i].title+"</a></p>";
+                li += "<p style='text-align: center'><a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick=\"addTabs('" + MenuList[i].title + "','" + MenuList[i].iconCls + "','" + MenuList[i].url + "')\" data-options=\"iconCls:'icon-search'\">" + MenuList[i].title + "</a></p>";
             }
             return li;
         }
@@ -38,6 +42,23 @@
                 }
             });
         });
+
+        //选项卡产生
+        function addTabs(title, iconCls, url) {
+            var a = $("#tt").tabs("exists", title)
+            if (a) {
+                $("#tt").tabs("select", title)
+            } else {
+                $('#tt').tabs('add', {
+                    title: title,
+                    iconCls: "icon-save",
+                    href: "${pageContext.request.contextPath}" + url,
+                    selected: true,
+                    closable: true
+                });
+            }
+        }
+
     </script>
 
 </head>
@@ -61,8 +82,7 @@
 </div>
 <div data-options="region:'center'">
     <div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">
-        <div title="主页" data-options="iconCls:'icon-neighbourhood',"
-             style="background-image:url(image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
+
     </div>
 </div>
 </body>

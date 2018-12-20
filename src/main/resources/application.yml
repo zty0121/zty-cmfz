@@ -12,6 +12,9 @@ spring:
     view:
       suffix: .jsp
       prefix: /
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 mybatis:
   type-aliases-package: com.zty.eneity
   mapper-locations: /com/zty/Mapper/*Mapper.xml
