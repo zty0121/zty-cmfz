@@ -37,6 +37,7 @@
         <tr>
             <td>brief<input id="brief" name="brief" readonly></td>
         </tr>
+
         <tr>
             <td>pub_date<input id="pub_date" name="pub_date" readonly></td>
         </tr>

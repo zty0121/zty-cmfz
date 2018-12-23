@@ -5,10 +5,6 @@
             validType: true,
             required: true
         });
-        $("#size").validatebox({
-            validType: true,
-            required: true
-        });
         $("#duration").validatebox({
             validType: true,
             required: true
@@ -50,10 +46,6 @@
         <tr>
             <td> title:</td>
             <td><input id="title" name="title"></td>
-        </tr>
-        <tr>
-            <td> size:</td>
-            <td><input id="size" name="size"></td>
         </tr>
         <tr>
             <td> duration:</td>

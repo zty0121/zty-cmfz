@@ -1,6 +1,14 @@
 <%@page pageEncoding="UTF-8" %>
 <script type="text/javascript">
     var AlbumId = "";
+
+    function Opt(value, row, index) {
+        if (row.album_id != null) {
+            return "<audio class='Music' height='1px' width='3px' src='${pageContext.request.contextPath}/music/" + row.url + "'controls='controls'></audio>"
+        } else {
+            return null;
+        }
+    };
     $(function () {
         $("#AlbumTreeGrid").treegrid({
             url: '${pageContext.request.contextPath}/act/Albumpage',
@@ -8,9 +16,9 @@
             treeField: 'title',
             columns: [[
                 {field: 'title', title: '名字', width: 60},
-                {field: 'url', title: '下载路径', width: 60},
+                {field: 'url', title: '下载路径', width: 60, formatter: Opt},
                 {field: 'size', title: '大小', width: 80},
-                {field: 'duration', title: '时长', width: 80}
+                {field: 'duration', title: '时长', width: 80},
             ]],
             fit: true,
             fitColumns: true,
@@ -75,22 +83,32 @@
             modal: true,
             cache: false,
         });
-        $("#DownChapterBtn").linkbutton({
+        $("#DownLoadChapterBtn").linkbutton({
             iconCls: 'icon-add',
             text: "下载音频",
             onClick: function () {
-                alert("下载音频");
+                var row = $("#AlbumTreeGrid").treegrid("getSelected");
+                //是子节点
+                if (row == null) {
+                    alert("请先选择行");
+                } else {
+                    if (row.album_id != null) {
+                        var RealUrl = "${pageContext.request.contextPath}/cc/DownLoad?url=" + row.url;
+                        location.href = RealUrl;
+                    } else {
+                        alert("您选择的不是章节");
+                    }
+                }
             }
         });
 
     })
-
 </script>
 <div id="AlbumTaskBar">
     <a id="AlbumDetailBtn"></a>
     <a id="AddAlbumBtn"></a>
     <a id="AddChapterBtn"></a>
-    <a id="DownChapterBtn"></a>
+    <a id="DownLoadChapterBtn"></a>
 </div>
 
 <div id="AlbumDetailDig"></div>
