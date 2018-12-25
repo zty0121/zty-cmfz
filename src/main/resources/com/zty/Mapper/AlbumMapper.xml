@@ -11,7 +11,7 @@
         <result column="abroadcast" property="broadcast"></result>
         <result column="abrief" property="brief"></result>
         <result column="apub_date" property="pub_date"></result>
-        <collection property="Children" ofType="com.zty.eneity.Chapter">
+        <collection property="children" ofType="com.zty.eneity.Chapter">
             <id column="cid" property="id"></id>
             <result column="ctitle" property="title"></result>
             <result column="csize" property="size"></result>
@@ -55,5 +55,27 @@
                            on a.id = c.album_id
         ]]>
     </select>
-
+    <select id="ExceptAlbum" resultMap="r1">
+        SELECT
+            a.id          aid,
+            a.title       atitle,
+            a.count       acount,
+            a.cover_img   acover_img,
+            a.score       ascore,
+            a.author      aauthor,
+            a.broadcast   abroadcast,
+            a.brief       abrief,
+            a.pub_date    apub_date,
+            c.id          cid,
+            c.title       ctitle,
+            c.size        csize,
+            c.duration    cduration,
+            c.url         curl,
+            c.upload_date cupload_date,
+            c.album_id    calbum_id
+        from (select *
+              FROM album) a
+                 left join chapter c
+                           on a.id = c.album_id
+    </select>
 </mapper>

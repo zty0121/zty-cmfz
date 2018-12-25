@@ -101,7 +101,39 @@
                 }
             }
         });
-
+        $("#ExportFileBtn").linkbutton({
+            iconCls: 'icon-remove',
+            text: "导出",
+            onClick: function () {
+                $.post("${pageContext.request.contextPath}/fc/ExceptFile",
+                    null,
+                    function (result) {
+                        if (result == "ok") {
+                            $.messager.show({
+                                title: "Tips",
+                                msg: "导出成功"
+                            })
+                        }
+                    }
+                )
+            }
+        });
+        $("#ImportFileBtn").linkbutton({
+            iconCls: 'icon-remove',
+            text: "导入",
+            onClick: function () {
+                $("#ImportFileDig").dialog("open");
+            }
+        });
+        $("#ImportFileDig").dialog({
+            title: "导入文件",
+            width: 600,
+            height: 300,
+            href: "${pageContext.request.contextPath}/Album/ImportAlbumFile.jsp",
+            closed: true,
+            modal: true,
+            cache: false,
+        });
     })
 </script>
 <div id="AlbumTaskBar">
@@ -109,9 +141,12 @@
     <a id="AddAlbumBtn"></a>
     <a id="AddChapterBtn"></a>
     <a id="DownLoadChapterBtn"></a>
+    <a id="ImportFileBtn"></a>
+    <a id="ExportFileBtn"></a>
 </div>
 
 <div id="AlbumDetailDig"></div>
 <div id="AddAlbumDig"></div>
 <div id="AddChapterDig"></div>
 <table id="AlbumTreeGrid"></table>
+<div id="ImportFileDig"></div>

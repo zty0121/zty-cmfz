@@ -5,10 +5,6 @@
             validType: true,
             required: true
         });
-        $("#duration").validatebox({
-            validType: true,
-            required: true
-        });
         $("#AlbumType").combobox({
             url: "${pageContext.request.contextPath}/act/QueryAllAlbum",
             valueField: "id",
@@ -46,10 +42,6 @@
         <tr>
             <td> title:</td>
             <td><input id="title" name="title"></td>
-        </tr>
-        <tr>
-            <td> duration:</td>
-            <td><input id="duration" name="duration"></td>
         </tr>
         <tr>
             <td> upload:</td>

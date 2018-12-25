@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zty.mapper.UserMapper">
+    <select id="QueryAllOneWeek" resultType="Integer">
+        <![CDATA[
+        SELECT count(*)
+        FROM user
+        WHERE DATEDIFF(NOW(), reg_date) < 7;
+        ]]>
+    </select>
+    <select id="QueryAllTwoWeek" resultType="Integer">
+        <![CDATA[
+        SELECT count(*)
+        FROM user
+        WHERE DATEDIFF(NOW(), reg_date) < 14;
+        ]]>
+    </select>
+    <select id="QueryAllThirdWeek" resultType="Integer">
+        <![CDATA[
+        SELECT count(*)
+        FROM user
+        WHERE DATEDIFF(NOW(), reg_date) < 21;
+        ]]>
+    </select>
+
+    <select id="getAllMarginData" resultType="Province">
+        select province name,count(*) value
+        from user
+        group by province
+    </select>
+</mapper>

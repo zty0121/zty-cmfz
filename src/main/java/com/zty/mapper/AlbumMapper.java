@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface AlbumMapper extends Mapper<Album> {
     public List<Album> PageRows(@Param("Page") Integer Page, @Param("PageSize") Integer PageSize);
+
+    public List<Album> ExceptAlbum();
 }
