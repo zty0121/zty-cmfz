@@ -42,6 +42,7 @@ public class UserController {
 
     @RequestMapping("/UpdateUser")
     public Object UpdateUser(String uid, String gender, String photo, String location, String description, String nickname, String province, String city, String password) {
+        System.out.println("xxxxx");
         return userService.UpdateOne("1", "m", "999.png", "河南省济源市", "我很专一", "戏子", "河南省", "济源市", "123457");
     }
 
