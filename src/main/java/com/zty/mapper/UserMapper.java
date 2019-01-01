@@ -16,4 +16,5 @@ public interface UserMapper extends Mapper<User> {
     public List<Province> getAllMarginData();
 
     public List<Province> getAllMan();
+
 }

@@ -30,4 +30,5 @@ public class User implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JSONField(format = "yyyy-MM-dd")
     private Date reg_date;
+    private String farmington;
 }

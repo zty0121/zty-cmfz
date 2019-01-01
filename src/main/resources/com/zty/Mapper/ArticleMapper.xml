@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zty.mapper.ArticleMapper">
-    <select id="QueryArticle">
+    <select id="QuerySomeArticle" parameterType="String" resultType="TotalArticle">
 
+        select insert_img thumbnail,title,pub_date create_date,charma author
+        from article a
+                 left join
+                 guru g on a.guru_id = g.id
+        where g.id = "1"
 
     </select>
+    <select id="QueryRestArticle" resultType="TotalArticle">
 
+        select insert_img thumbnail,title,pub_date create_date,charma author
+        from article a
+                 left join
+                 guru g on a.guru_id = g.id
+        where g.id!="1"
+
+    </select>
+    <select id="QueryAllArticle" resultType="TotalArticle">
+        select insert_img thumbnail,title,pub_date create_date,charma author
+        from article a
+                 left join
+                 guru g on a.guru_id = g.id
+    </select>
 </mapper>

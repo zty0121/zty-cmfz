@@ -15,4 +15,6 @@ public interface BannerService {
     public void AddBanner(Banner b, HttpSession session, MultipartFile file) throws IOException;
 
     public void DeleteBanner(Banner b);
+
+
 }

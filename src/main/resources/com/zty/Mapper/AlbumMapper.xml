@@ -78,4 +78,21 @@
                  left join chapter c
                            on a.id = c.album_id
     </select>
+
+    <select id="QueryTotalAlbum" resultType="TotalAlbum">
+        select cover_img thumbnail,title,author,count set_count,pub_date create_date
+        from album
+    </select>
+    <select id="QueryWenDetail" parameterType="String" resultType="WenDetail">
+        select cover_img thumbnail,
+               title,
+               score,
+               author,
+               broadcast,
+               count     set_count,
+               brief,
+               pub_date  create_date
+        from album
+        where id = #{id};
+    </select>
 </mapper>

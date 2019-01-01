@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -41,31 +42,9 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
         }
     }
-/*
+
     @Override
-    public List<Album> ImportFile(MultipartFile file, HttpSession session) {
-       ImportParams params = new ImportParams();
-        ServletContext scc = session.getServletContext();
-        String s1 = scc.getRealPath("E:/easypoi.xls");
-        System.out.println(s1);
-        String s2 = s1+"\\"+file.getOriginalFilename();
-        params.setTitleRows(1);
-        params.setHeadRows(2);
-        List<Album> list = null;
-        FileInputStream fis = null;
-        try {
-            fis=new FileInputStream(s2);
-            list = ExcelImportUtil.importExcel(fis,Album.class, params);
-            for (Album album : list) {
-                System.out.println(album);
-            }
-        }catch (NoSuchElementException e){
-            //throw new NormalException("模板不能为空");
-        } catch (Exception e) {
-            e.printStackTrace();
-            //throw new NormalException(e.getMessage());
-        }
-        return list;
-        }
-        */
+    public void ImportFile(HttpSession session, MultipartFile file) {
+
+    }
 }

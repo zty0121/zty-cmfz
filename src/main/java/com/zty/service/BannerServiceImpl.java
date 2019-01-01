@@ -19,7 +19,6 @@ import java.util.Date;
 public class BannerServiceImpl implements BannerService {
     @Autowired
     private BannerMapper bannerMapper;
-
     @Override
     public BannerDto PageQuery(Integer page, Integer pageSize) {
         BannerDto bd = new BannerDto();

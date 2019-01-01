@@ -14,4 +14,13 @@
         order by id desc limit ${(Page-1)*PageSize},${PageSize}
         ]]>
   	</select>
+
+
+    <select id="QueryHeader" resultType="Header">
+
+        select id,img_path thumbnail,description as 'desc'
+        from banner
+        where status = "Y"
+
+    </select>
 </mapper>
